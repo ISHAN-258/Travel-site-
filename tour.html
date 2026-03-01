@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tripathi Travels | Indian Tour & Travels</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER - FANCY TITLE UPGRADE */
+header {
+    background: linear-gradient(135deg, #ff9933, #ff6600);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+header h1 {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+    font-weight: 900;
+}
+
+/* NAV */
+nav {
+    background: #222;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+nav a:hover {
+    background: #ff6600;
+    color: #fff;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957') center/cover no-repeat;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* FOUNDER SECTION */
+.founder-section {
+    background: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 4px solid #ff6600;
+    animation: fadeInUp 1.2s ease-out;
+}
+.founder-badge {
+    color: #ff6600;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.founder-name {
+    font-size: 2rem;
+    color: #222;
+    margin: 10px 0;
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+section h2 {
+    text-align: center;
+    color: #ff6600;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+/* BUS CARDS */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.service-box {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeInUp 1s both;
+}
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.service-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.service-box div {
+    padding: 20px;
+}
+
+/* SPECIAL SERVICES */
+.special-offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.offer-card {
+    background: white;
+    padding: 30px;
+    border-left: 5px solid #ff6600;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+.offer-card:hover {
+    background: #fffbf7;
+    transform: scale(1.02);
+}
+.offer-card i {
+    font-size: 2.5rem;
+    color: #ff6600;
+    margin-bottom: 15px;
+}
+
+/* UPGRADED BOOKING SECTION */
+.booking-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 850px;
+    margin: auto;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+.booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #444;
+}
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s;
+}
+.input-group input:focus, .input-group select:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+.booking-container button {
+    grid-column: span 2;
+    padding: 16px;
+    background: #ff6600;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.booking-container button:hover {
+    background: #222;
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+.social-footer a {
+    color: white;
+    font-size: 28px;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+.social-footer a:hover {
+    color: #ff6600;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+    .booking-grid { grid-template-columns: 1fr; }
+    .booking-container button { grid-column: 1; }
+    header h1 { font-size: 2.5rem; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Tripathi Travels</h1>
+    <p>Connecting Journeys, Fulfilling Dreams</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#services">Our Fleet</a>
+    <a href="#special">Special Services</a>
+    <a href="#booking">Book Now</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero" id="home">
+    <h2>Premium Travel Experience Across India</h2>
+    <p>Safe • Punctual • Comfortable</p>
+</div>
+
+<div class="founder-section">
+    <span class="founder-badge">Leadership</span>
+    <h3 class="founder-name">Rangeshwar Nath Tripathi</h3>
+    <p style="max-width: 750px; margin: auto; font-style: italic; color: #555;">
+        "Our mission is to redefine travel by providing reliable transportation for every occasion, 
+        ensuring that every passenger reaches their destination with a smile."
+    </p>
+</div>
+
+<section id="services">
+    <h2>Explore Our Fleet</h2>
+    <div class="services">
+        <div class="service-box">
+            <img src="https://content.jdmagicbox.com/quickquotes/images_main/luxury-sleeper-bus-802951263-slfquptj.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit">
+            <div><h3>Sleeper AC</h3><p>Ultimate comfort for long-haul overnight journeys.</p></div>
+        </div>
+        <div class="service-box">
+            <img src="https://www.ecorentacar.com/wp-content/uploads/2024/09/Volvo-Bus-35-Seater-Interior2-Product_Imgs.jpg">
+            <div><h3>Sitting AC</h3><p>Premium push-back seats with climate control.</p></div>
+        </div>
+        <div class="service-box">
+            <img src="https://www.bangaloretourstravelss.com/images/car/detail/40-seater-1.webp">
+            <div><h3>Sitting Non-AC</h3><p>Budget-friendly seating for daily group travel.</p></div>
+        </div>
+        <div class="service-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt1X511rWzJMFuuUwTAc5grWpwSDBDtiqk1Q&s">
+            <div><h3>Traveller AC</h3><p>Luxury Tempo Traveller for families and VIP groups.</p></div>
+        </div>
+        <div class="service-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj5q49i86IoYU8TLFfbRmuBjkwvI56zLa-Zg&s">
+            <div><h3>Traveller Non-AC</h3><p>Economical group travel for short distance trips.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="special" style="background: #fff;">
+    <h2>Special Occasion Bookings</h2>
+    <div class="special-offers">
+        <div class="offer-card">
+            <i class="fas fa-om"></i>
+            <h3>Religious Tours</h3>
+            <p>Specialized group trips to Ayodhya, Kashi Vishwanath, Mathura, and other sacred shrines.</p>
+        </div>
+        <div class="offer-card">
+            <i class="fas fa-ring"></i>
+            <h3>Marriage Functions</h3>
+            <p>Reliable fleet management for wedding guests, ensuring everyone arrives on time and in style.</p>
+        </div>
+        <div class="offer-card">
+            <i class="fas fa-mountain"></i>
+            <h3>Customized Tours</h3>
+            <p>Tailor-made itineraries for hill stations, heritage sites, and educational school trips.</p>
+        </div>
+    </div>
+</section>
+
+<section id="booking">
+    <h2>Book Your Journey</h2>
+    <div class="booking-container">
+        <form class="booking-grid">
+            <div class="input-group">
+                <label>From (State)</label>
+                <select required>
+                    <option value="" disabled selected>Select State</option>
+                    <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
+                    <option>-- UTs --</option>
+                    <option>Andaman & Nicobar</option><option>Chandigarh</option><option>Dadra & Nagar Haveli</option><option>Delhi</option><option>Jammu & Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>To (State)</label>
+                <select required>
+                    <option value="" disabled selected>Select State</option>
+                    <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
+                    <option>-- UTs --</option>
+                    <option>Andaman & Nicobar</option><option>Chandigarh</option><option>Dadra & Nagar Haveli</option><option>Delhi</option><option>Jammu & Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Travel Date</label>
+                <input type="date" required>
+            </div>
+            <div class="input-group">
+                <label>Vehicle Category</label>
+                <select>
+                    <option>Sleeper AC</option>
+                    <option>Sitting AC</option>
+                    <option>Sitting Non-AC</option>
+                    <option>Traveller AC</option>
+                    <option>Traveller Non-AC</option>
+                    <option>Marriage/Special Tour Order</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Mobile Number</label>
+                <input type="tel" placeholder="+91" required>
+            </div>
+            <div class="input-group">
+                <label>No. of Passengers</label>
+                <input type="number" placeholder="1">
+            </div>
+            <button type="submit">Check Availability & Book Now</button>
+        </form>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Our Team</h2>
+    <p style="text-align:center; font-size: 1.1rem;">
+        📍 Rangeela palace,Rampur, Muftiganj, Jaunpur<br>
+        📞 +91 7007115728<br>
+        📧 rangeele@gmail.com
+    </p>
+
+    <div class="social" style="text-align:center; margin-top:20px;">
+        <a href="https://instagram.com" style="color:#e1306c; font-size:35px; margin:0 15px;"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com" style="color:#1877f2; font-size:35px; margin:0 15px;"><i class="fab fa-facebook"></i></a>
+        <a href="https://wa.me/917007115728" style="color:#25d366; font-size:35px; margin:0 15px;"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Tripathi Travels | Managing Director: <b>Rangeshwar Nath Tripathi</b></p>
+    <div class="social-footer">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/rangeele.tripathi"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</footer>
+
+</body>
+</html>
