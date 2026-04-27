@@ -4,16 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tripathi Travels | Premium Tour & Travels – Jaunpur, UP</title>
-<meta name="description" content="Premium bus, tempo traveller & luxury coach hire from Jaunpur. Pilgrimage, weddings, group tours across India. Call +91 7007115728">
+<meta name="description" content="Premium bus, tempo traveller & luxury coach hire from Jaunpur. Pilgrimage, weddings, group tours across India. Call +91 7007115728 | +91 9415287689">
+<meta name="keywords" content="bus hire Jaunpur, tempo traveller Jaunpur UP, pilgrimage tour bus, wedding coach UP, Tripathi Travels, Rangeshwar Nath Tripathi">
+<meta name="author" content="Rangeshwar Nath Tripathi – Tripathi Travels">
+<meta property="og:title" content="Tripathi Travels | Premium Tour & Travels – Jaunpur, UP">
+<meta property="og:description" content="Premium buses & tempo travellers for pilgrimage, weddings & group tours. Trusted since 2008. Call +91 7007115728">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img1.jpeg">
+<meta name="theme-color" content="#c0301a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"TravelAgency",
+  "name":"Tripathi Travels",
+  "founder":{"@type":"Person","name":"Rangeshwar Nath Tripathi"},
+  "address":{"@type":"PostalAddress","streetAddress":"Rangeela Palace, Rampur, Muftiganj","addressLocality":"Jaunpur","addressRegion":"Uttar Pradesh","addressCountry":"IN"},
+  "telephone":["+917007115728","+919415287689"],
+  "priceRange":"₹₹",
+  "openingHours":"Mo-Su 00:00-23:59"
+}
+</script>
+
 <style>
 :root{
-  --primary:#e85d04;
-  --primary-dark:#c44e03;
-  --primary-glow:rgba(232,93,4,0.18);
+  --primary:#c0301a;
+  --primary-dark:#9b1c1c;
+  --primary-mid:#d64020;
+  --primary-glow:rgba(192,48,26,0.18);
+  --crimson:#8b0000;
+  --crimson-light:rgba(139,0,0,0.25);
   --dark:#0d0d0d;
   --dark2:#1a1a1a;
   --dark3:#252525;
@@ -31,9 +56,50 @@ img{display:block;width:100%}
 a{text-decoration:none;color:inherit}
 
 /* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--dark)}
 ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scrollProgress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--crimson),var(--primary),var(--gold));
+  z-index:9999;transition:width .1s linear;
+}
+
+/* ── PRELOADER ── */
+#preloader{
+  position:fixed;inset:0;background:var(--dark);z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#preloader.hide{opacity:0;visibility:hidden}
+.pre-logo{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;letter-spacing:2px}
+.pre-logo span{color:var(--primary)}
+.pre-dots{display:flex;gap:10px}
+.pre-dot{
+  width:10px;height:10px;border-radius:50%;background:var(--primary);
+  animation:preBounce 1.2s infinite ease-in-out;
+}
+.pre-dot:nth-child(2){animation-delay:.2s;background:var(--gold)}
+.pre-dot:nth-child(3){animation-delay:.4s;background:var(--primary-dark)}
+@keyframes preBounce{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1.1);opacity:1}}
+
+/* ── OFFER BANNER ── */
+#offerBanner{
+  background:linear-gradient(90deg,var(--crimson),var(--primary),var(--crimson));
+  background-size:200% 100%;
+  animation:bannerShift 4s linear infinite;
+  padding:10px 6%;text-align:center;font-size:.8rem;font-weight:600;
+  letter-spacing:1px;position:relative;z-index:800;display:flex;
+  align-items:center;justify-content:center;gap:12px;
+}
+@keyframes bannerShift{0%{background-position:0%}100%{background-position:200%}}
+#offerBanner .close-banner{
+  position:absolute;right:20px;cursor:pointer;opacity:.7;font-size:1rem;
+  background:none;border:none;color:#fff;transition:.2s;
+}
+#offerBanner .close-banner:hover{opacity:1}
 
 /* ── NAV ── */
 nav{
@@ -41,18 +107,28 @@ nav{
   height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;
   padding:0 6%;
-  background:rgba(13,13,13,0.85);
+  background:rgba(13,13,13,0.88);
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,0.06);
-  transition:background .3s;
+  transition:background .3s,top .3s;
 }
 nav.scrolled{background:rgba(13,13,13,0.98)}
+nav.banner-pushed{top:40px}
 .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;letter-spacing:1px}
 .logo span{color:var(--primary)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:.25s}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);transition:.25s;position:relative;padding-bottom:4px;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--primary);transform:scaleX(0);transform-origin:left;transition:.3s;border-radius:2px;
+}
+.nav-links a.active,
 .nav-links a:hover{color:var(--primary)}
-.nav-cta{background:var(--primary);color:#fff;padding:10px 24px;border-radius:50px;font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.3s;border:2px solid var(--primary)}
+.nav-links a.active::after{transform:scaleX(1)}
+.nav-cta{background:var(--primary);color:#fff;padding:10px 22px;border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.3s;border:2px solid var(--primary)}
 .nav-cta:hover{background:transparent;color:var(--primary)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
 .burger span{display:block;width:26px;height:2px;background:var(--text);transition:.3s;transform-origin:center}
@@ -62,11 +138,11 @@ nav.scrolled{background:rgba(13,13,13,0.98)}
 .mobile-nav{
   display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
   background:rgba(13,13,13,0.98);backdrop-filter:blur(20px);
-  flex-direction:column;align-items:center;justify-content:center;gap:36px;
-  z-index:999;opacity:0;pointer-events:none;transition:.35s
+  flex-direction:column;align-items:center;justify-content:center;gap:32px;
+  z-index:999;opacity:0;pointer-events:none;transition:.35s;
 }
 .mobile-nav.open{opacity:1;pointer-events:all}
-.mobile-nav a{font-size:1.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text);transition:.2s}
+.mobile-nav a{font-size:1.4rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text);transition:.2s}
 .mobile-nav a:hover{color:var(--primary)}
 
 /* ── HERO ── */
@@ -81,23 +157,29 @@ nav.scrolled{background:rgba(13,13,13,0.98)}
   transform:scale(1.05);
   animation:heroZoom 18s ease-in-out infinite alternate;
 }
+/* Grain texture overlay */
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.06;pointer-events:none;
+}
 @keyframes heroZoom{0%{transform:scale(1.05)}100%{transform:scale(1.12)}}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,13,13,0.82) 0%,rgba(13,13,13,0.45) 60%,rgba(232,93,4,0.15) 100%)}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(13,13,13,0.85) 0%,rgba(13,13,13,0.48) 60%,rgba(139,0,0,0.2) 100%);
+}
 .hero-content{position:relative;z-index:2;max-width:900px}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);
   color:var(--gold);padding:7px 18px;border-radius:50px;
   font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  margin-bottom:28px;
-  animation:fadeUp .8s ease both;
+  margin-bottom:28px;animation:fadeUp .8s ease both;
 }
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:clamp(2.6rem,7vw,5.5rem);
-  line-height:1.08;font-weight:900;
-  margin-bottom:24px;
-  animation:fadeUp .8s .15s ease both;
+  font-size:clamp(2.6rem,7vw,5.5rem);line-height:1.08;font-weight:900;
+  margin-bottom:24px;animation:fadeUp .8s .15s ease both;
 }
 .hero h1 em{color:var(--primary);font-style:normal}
 .hero p{
@@ -106,10 +188,24 @@ nav.scrolled{background:rgba(13,13,13,0.98)}
   animation:fadeUp .8s .3s ease both;
 }
 .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .45s ease both}
-.btn-primary{background:var(--primary);color:#fff;padding:16px 38px;border-radius:50px;font-weight:700;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:.35s;border:2px solid var(--primary);box-shadow:0 12px 28px rgba(232,93,4,0.35)}
+.btn-primary{background:var(--primary);color:#fff;padding:16px 38px;border-radius:50px;font-weight:700;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:.35s;border:2px solid var(--primary);box-shadow:0 12px 28px rgba(192,48,26,0.4)}
 .btn-primary:hover{background:transparent;color:var(--primary);transform:translateY(-3px)}
 .btn-ghost{background:transparent;color:#fff;padding:16px 38px;border-radius:50px;font-weight:700;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:.35s;border:2px solid rgba(255,255,255,0.3)}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
+
+/* Availability badge on hero */
+.avail-badge{
+  position:absolute;bottom:100px;right:6%;
+  background:rgba(30,27,24,0.9);border:1px solid rgba(192,48,26,0.4);
+  border-radius:14px;padding:14px 20px;text-align:center;
+  animation:fadeUp 1s .9s ease both;
+  backdrop-filter:blur(12px);
+}
+.avail-badge .avail-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--primary);line-height:1}
+.avail-badge .avail-label{font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.avail-dot{display:inline-block;width:7px;height:7px;background:#22c55e;border-radius:50%;margin-right:4px;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+
 .hero-scroll{
   position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:8px;
@@ -122,18 +218,17 @@ nav.scrolled{background:rgba(13,13,13,0.98)}
 
 /* ── STATS BAR ── */
 .stats-bar{
-  background:var(--primary);
+  background:linear-gradient(90deg,var(--crimson),var(--primary),var(--primary-dark),var(--crimson));
+  background-size:300% 100%;
+  animation:statsGrad 8s linear infinite;
   display:grid;grid-template-columns:repeat(4,1fr);
-  padding:0;
 }
-.stat{
-  padding:32px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.18);
-  transition:.3s;
-}
+@keyframes statsGrad{0%{background-position:0%}100%{background-position:300%}}
+.stat{padding:32px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.15);transition:.3s}
 .stat:last-child{border-right:none}
-.stat:hover{background:var(--primary-dark)}
+.stat:hover{background:rgba(0,0,0,0.2)}
 .stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:#fff}
-.stat-label{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:4px}
+.stat-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-top:4px}
 
 /* ── SECTIONS ── */
 section{padding:100px 6%}
@@ -144,7 +239,12 @@ section{padding:100px 6%}
 .section-head.center{text-align:center}
 .section-head.center .section-sub{margin:0 auto}
 
-/* ── WHY CHOOSE ── */
+/* ── TRUST STRIP ── */
+.trust-strip{background:var(--dark3);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);padding:22px 6%;display:flex;justify-content:center;flex-wrap:wrap;gap:32px}
+.trust-badge{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.82rem;font-weight:600;letter-spacing:.5px}
+.trust-badge i{color:var(--gold);font-size:1.1rem}
+
+/* ── WHY ── */
 #why{background:var(--dark2)}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
 .why-card{
@@ -152,11 +252,8 @@ section{padding:100px 6%}
   border-radius:var(--radius);padding:40px 32px;
   transition:.4s;position:relative;overflow:hidden;
 }
-.why-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--primary);transform:scaleX(0);transform-origin:left;transition:.4s;
-}
-.why-card:hover{transform:translateY(-8px);border-color:rgba(232,93,4,0.25)}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--crimson),var(--primary));transform:scaleX(0);transform-origin:left;transition:.4s}
+.why-card:hover{transform:translateY(-8px);border-color:rgba(192,48,26,0.3)}
 .why-card:hover::before{transform:scaleX(1)}
 .why-icon{width:54px;height:54px;border-radius:14px;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .why-icon i{font-size:1.4rem;color:var(--primary)}
@@ -167,7 +264,7 @@ section{padding:100px 6%}
 #fleet{background:var(--dark)}
 .fleet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
 .fleet-card{border-radius:var(--radius);overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,0.06);transition:.4s;cursor:pointer}
-.fleet-card:hover{transform:translateY(-8px);border-color:rgba(232,93,4,0.3)}
+.fleet-card:hover{transform:translateY(-8px);border-color:rgba(192,48,26,0.35);box-shadow:0 20px 50px rgba(192,48,26,0.15)}
 .fleet-img{height:210px;overflow:hidden;position:relative}
 .fleet-img img{height:100%;object-fit:cover;transition:.5s}
 .fleet-card:hover .fleet-img img{transform:scale(1.08)}
@@ -175,11 +272,99 @@ section{padding:100px 6%}
 .fleet-info{padding:28px}
 .fleet-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:8px}
 .fleet-info .fleet-cap{color:var(--muted);font-size:.82rem;margin-bottom:16px}
-.fleet-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.feature-pill{background:rgba(232,93,4,0.1);border:1px solid rgba(232,93,4,0.2);color:var(--primary);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.5px}
-.fleet-price{display:flex;align-items:baseline;gap:4px;color:#fff}
-.fleet-price span:first-child{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900}
-.fleet-price span:last-child{color:var(--muted);font-size:.82rem}
+.fleet-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.feature-pill{background:rgba(192,48,26,0.1);border:1px solid rgba(192,48,26,0.2);color:var(--primary);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.5px}
+.fleet-enquire-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;background:linear-gradient(135deg,var(--primary),var(--crimson));
+  color:#fff;border:none;padding:13px 20px;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;
+  letter-spacing:.5px;cursor:pointer;transition:.3s;
+}
+.fleet-enquire-btn:hover{filter:brightness(1.15);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,48,26,0.4)}
+.fleet-enquire-btn i{font-size:1rem}
+
+/* ── ABOUT OWNER ── */
+#about{
+  background:linear-gradient(135deg,#110303 0%,#220606 40%,#1a1010 70%,#0d0d0d 100%);
+  position:relative;overflow:hidden;
+}
+#about::before{
+  content:'';position:absolute;
+  top:-150px;right:-150px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(139,0,0,0.3) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+#about::after{
+  content:'';position:absolute;
+  bottom:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(192,48,26,0.15) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;
+  position:relative;z-index:1;
+}
+.owner-photo-wrap{
+  position:relative;display:flex;justify-content:center;
+}
+.owner-photo-frame{
+  position:relative;
+  width:340px;
+}
+.owner-photo-frame::before{
+  content:'';
+  position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;
+  border:2px solid rgba(192,48,26,0.5);border-radius:22px;
+  z-index:0;
+}
+.owner-photo-frame::after{
+  content:'';
+  position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;
+  border:2px solid rgba(201,168,76,0.3);border-radius:22px;
+  z-index:0;
+}
+.owner-photo{
+  width:100%;height:420px;
+  border-radius:18px;object-fit:cover;object-position:top center;
+  border:3px solid rgba(139,0,0,0.6);
+  box-shadow:
+    0 0 0 1px rgba(192,48,26,0.3),
+    0 30px 80px rgba(139,0,0,0.5),
+    0 10px 30px rgba(0,0,0,0.6);
+  position:relative;z-index:1;
+  display:block;
+}
+.owner-red-badge{
+  position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--crimson),var(--primary));
+  color:#fff;padding:10px 28px;border-radius:50px;
+  font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  white-space:nowrap;z-index:2;
+  box-shadow:0 8px 24px rgba(139,0,0,0.5);
+}
+.about-text .section-label{margin-bottom:8px}
+.owner-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;
+  line-height:1.1;margin-bottom:6px;
+  background:linear-gradient(135deg,#fff 40%,var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.owner-title{color:var(--gold);font-size:.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
+.owner-bio{color:rgba(240,236,228,0.72);font-size:.95rem;line-height:1.85;margin-bottom:32px}
+.owner-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:36px}
+.owner-stat{
+  background:rgba(139,0,0,0.15);border:1px solid rgba(192,48,26,0.25);
+  border-radius:12px;padding:18px 20px;
+}
+.owner-stat .num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--primary)}
+.owner-stat .lbl{color:var(--muted);font-size:.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.owner-contacts{display:flex;flex-direction:column;gap:12px}
+.owner-contact-item{display:flex;align-items:center;gap:12px;color:rgba(240,236,228,0.85);font-size:.9rem;font-weight:600}
+.owner-contact-item i{color:var(--primary);width:18px;text-align:center}
 
 /* ── ROUTES ── */
 #routes{background:var(--dark2)}
@@ -192,7 +377,7 @@ section{padding:100px 6%}
   background:var(--card);border:1px solid rgba(255,255,255,0.06);
   border-radius:12px;padding:16px 22px;transition:.3s;cursor:pointer;
 }
-.route-item:hover{border-color:var(--primary);background:rgba(232,93,4,0.06)}
+.route-item:hover{border-color:var(--primary);background:rgba(192,48,26,0.07)}
 .route-cities{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.9rem}
 .route-arrow{color:var(--primary)}
 .route-dist{color:var(--muted);font-size:.78rem;font-weight:500}
@@ -200,8 +385,6 @@ section{padding:100px 6%}
 /* ── BOOKING ── */
 #booking{background:var(--dark)}
 .booking-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;align-items:start}
-.booking-info h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;margin-bottom:16px;line-height:1.1}
-.booking-info p{color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:32px}
 .contact-list{display:flex;flex-direction:column;gap:18px}
 .contact-item{display:flex;align-items:center;gap:14px}
 .contact-icon{width:44px;height:44px;border-radius:12px;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -213,36 +396,55 @@ section{padding:100px 6%}
 .form-group{display:flex;flex-direction:column;gap:8px}
 .form-group.full{grid-column:span 2}
 .form-group label{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-.form-group input,.form-group select{
+.form-group input,.form-group select,.form-group textarea{
   background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
   border-radius:10px;padding:13px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;
   transition:.3s;outline:none;
 }
 .form-group select option{background:var(--dark2);color:var(--text)}
-.form-group input:focus,.form-group select:focus{border-color:var(--primary);background:rgba(232,93,4,0.06)}
-.form-group input::placeholder{color:var(--muted)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);background:rgba(192,48,26,0.06)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
+.form-group textarea{resize:vertical;min-height:80px}
 .form-submit{
   grid-column:span 2;
-  background:var(--primary);color:#fff;border:none;padding:16px;border-radius:12px;
-  font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  cursor:pointer;transition:.35s;margin-top:6px;
+  background:linear-gradient(135deg,var(--primary),var(--crimson));
+  color:#fff;border:none;padding:16px;border-radius:12px;
+  font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:.35s;margin-top:6px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
 }
-.form-submit:hover{background:var(--primary-dark);transform:translateY(-2px)}
-.success-msg{display:none;background:rgba(0,200,100,0.12);border:1px solid rgba(0,200,100,0.3);color:#4ade80;padding:14px;border-radius:10px;font-size:.88rem;margin-top:12px;text-align:center}
+.form-submit:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 10px 30px rgba(192,48,26,0.4)}
+.form-note{grid-column:span 2;text-align:center;color:var(--muted);font-size:.78rem;margin-top:4px}
 
 /* ── TESTIMONIALS ── */
 #testimonials{background:var(--dark2)}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.testi-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:36px;position:relative;transition:.3s}
-.testi-card:hover{border-color:rgba(232,93,4,0.2)}
+.testi-carousel{position:relative;overflow:hidden}
+.testi-track{display:flex;gap:24px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.testi-card{
+  flex:0 0 calc(33.333% - 16px);
+  background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);
+  padding:36px;position:relative;transition:.3s;
+}
+.testi-card:hover{border-color:rgba(192,48,26,0.25)}
 .testi-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
 .stars{color:var(--gold);font-size:.85rem;letter-spacing:2px}
-.quote-mark{font-family:'Playfair Display',serif;font-size:4rem;color:var(--primary);opacity:.25;line-height:.5}
+.quote-mark{font-family:'Playfair Display',serif;font-size:4rem;color:var(--primary);opacity:.2;line-height:.5}
 .testi-text{color:rgba(240,236,228,0.75);font-size:.9rem;line-height:1.75;margin-bottom:24px;font-style:italic}
 .testi-author{display:flex;align-items:center;gap:14px}
-.author-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;color:#fff;flex-shrink:0}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--crimson));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;color:#fff;flex-shrink:0}
 .author-name{font-weight:700;font-size:.88rem}
 .author-place{color:var(--muted);font-size:.75rem;margin-top:2px}
+.testi-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:36px}
+.testi-btn{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--card);border:1px solid rgba(255,255,255,0.1);
+  color:var(--muted);font-size:.9rem;cursor:pointer;transition:.3s;
+  display:flex;align-items:center;justify-content:center;
+}
+.testi-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-glow)}
+.testi-dots{display:flex;gap:8px}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:.3s}
+.testi-dot.active{background:var(--primary);width:24px;border-radius:4px}
 
 /* ── GALLERY ── */
 #gallery{background:var(--dark);padding:80px 6%}
@@ -253,14 +455,33 @@ section{padding:100px 6%}
 .gal-item.big{grid-column:span 2;grid-row:span 2}
 .gal-item img{height:220px}
 .gal-item.big img{height:100%}
-.gal-overlay{position:absolute;inset:0;background:rgba(13,13,13,0);transition:.3s;display:flex;align-items:center;justify-content:center}
-.gal-item:hover .gal-overlay{background:rgba(232,93,4,0.3)}
+.gal-overlay{
+  position:absolute;inset:0;background:rgba(13,13,13,0);
+  transition:.3s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
+}
+.gal-item:hover .gal-overlay{background:rgba(139,0,0,0.4)}
+.gal-overlay-icon{opacity:0;transform:scale(.7);transition:.3s;color:#fff;font-size:1.8rem}
+.gal-item:hover .gal-overlay-icon{opacity:1;transform:scale(1)}
+
+/* ── LIGHTBOX ── */
+#lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,0.95);
+  z-index:5000;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:.3s;
+}
+#lightbox.open{opacity:1;pointer-events:all}
+#lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 0 80px rgba(192,48,26,0.4)}
+#lightboxClose{
+  position:absolute;top:24px;right:28px;font-size:2rem;
+  color:rgba(255,255,255,0.6);cursor:pointer;transition:.2s;background:none;border:none;
+}
+#lightboxClose:hover{color:#fff}
 
 /* ── FAQ ── */
 #faq{background:var(--dark2)}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:50px}
 .faq-item{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;transition:.3s}
-.faq-item.open{border-color:rgba(232,93,4,0.25)}
+.faq-item.open{border-color:rgba(192,48,26,0.3)}
 .faq-question{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;cursor:pointer;font-weight:600;font-size:.92rem;gap:16px}
 .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary);transition:.3s;font-size:.8rem}
 .faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg)}
@@ -268,15 +489,15 @@ section{padding:100px 6%}
 .faq-answer-inner{padding:0 26px 22px}
 .faq-item.open .faq-answer{max-height:200px}
 
-/* ── TRUST BADGES ── */
-.trust-strip{background:var(--dark3);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);padding:24px 6%;display:flex;justify-content:center;flex-wrap:wrap;gap:36px}
-.trust-badge{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.82rem;font-weight:600;letter-spacing:.5px}
-.trust-badge i{color:var(--gold);font-size:1.1rem}
+/* ── MAP SECTION ── */
+#map-section{background:var(--dark);padding:0}
+#map-section iframe{width:100%;height:400px;border:0;filter:grayscale(0.3) brightness(0.85);display:block}
 
 /* ── FOOTER ── */
 footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255,255,0.05)}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:50px;margin-bottom:60px}
-.footer-brand .logo{font-size:1.4rem;margin-bottom:16px;display:block}
+.footer-brand .logo{font-size:1.4rem;margin-bottom:6px;display:block}
+.footer-director{color:var(--primary);font-size:.82rem;font-weight:700;letter-spacing:1px;margin-bottom:14px}
 .footer-brand p{color:var(--muted);font-size:.85rem;line-height:1.75;max-width:260px}
 .footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:20px}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -284,7 +505,7 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 .footer-links a:hover{color:var(--primary)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);padding-top:28px;flex-wrap:wrap;gap:16px}
 .footer-bottom p{color:var(--muted);font-size:.78rem}
-.social-links{display:flex;gap:14px}
+.social-links{display:flex;gap:12px;margin-top:22px}
 .social-links a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.95rem;transition:.3s}
 .social-links a:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-glow)}
 
@@ -292,33 +513,90 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 .whatsapp-btn{
   position:fixed;bottom:100px;right:28px;width:58px;height:58px;border-radius:50%;
   background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;box-shadow:0 8px 24px rgba(37,211,102,0.35);transition:.3s;z-index:900;
+  font-size:1.6rem;box-shadow:0 8px 24px rgba(37,211,102,0.4);transition:.3s;z-index:900;
 }
-.whatsapp-btn:hover{transform:scale(1.12) rotate(8deg);color:#fff}
+.whatsapp-btn:hover{transform:scale(1.12);color:#fff}
+.whatsapp-tooltip{
+  position:absolute;right:70px;top:50%;transform:translateY(-50%);
+  background:#25D366;color:#fff;white-space:nowrap;
+  padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:700;
+  opacity:0;pointer-events:none;transition:.3s;
+}
+.whatsapp-btn:hover .whatsapp-tooltip{opacity:1}
+
+/* scroll-to-top with ring */
 .scroll-top{
-  position:fixed;bottom:28px;right:28px;width:42px;height:42px;border-radius:50%;
-  background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:900;border:none;
+  position:fixed;bottom:28px;right:28px;width:48px;height:48px;
+  background:var(--dark2);border:2px solid rgba(255,255,255,0.1);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;cursor:pointer;opacity:0;pointer-events:none;
+  transition:.3s;z-index:900;border-radius:50%;
 }
 .scroll-top.show{opacity:1;pointer-events:all}
-.scroll-top:hover{background:var(--primary-dark);transform:translateY(-3px)}
-.mobile-call{
-  display:none;position:fixed;bottom:0;left:0;right:0;
-  background:var(--primary);color:#fff;text-align:center;padding:15px;
-  font-weight:700;font-size:.95rem;letter-spacing:1px;text-transform:uppercase;
-  z-index:1001;
+.scroll-top:hover{border-color:var(--primary);color:var(--primary)}
+.scroll-ring{
+  position:absolute;inset:-2px;border-radius:50%;
+  background:conic-gradient(var(--primary) var(--p,0%), transparent 0%);
+  mask:radial-gradient(farthest-side,transparent 60%,black 60%);
+  -webkit-mask:radial-gradient(farthest-side,transparent 60%,black 60%);
 }
 
-/* ── MODAL OVERLAY ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
+/* ── MOBILE BOTTOM BAR ── */
+.mobile-bar{
+  display:none;position:fixed;bottom:0;left:0;right:0;
+  z-index:1001;display:none;
+  grid-template-columns:1fr 1fr;
+}
+.mobile-bar a{
+  padding:15px 10px;text-align:center;
+  font-weight:700;font-size:.85rem;letter-spacing:.5px;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.mobile-bar .mb-call{background:var(--primary);color:#fff}
+.mobile-bar .mb-wa{background:#25D366;color:#fff}
+
+/* ── ENQUIRE MODAL ── */
+#enquireModal{
+  position:fixed;inset:0;background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(8px);z-index:4000;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:.3s;
+}
+#enquireModal.open{opacity:1;pointer-events:all}
+.enquire-box{
+  background:var(--dark2);border:1px solid rgba(192,48,26,0.3);
+  border-radius:24px;padding:44px;max-width:440px;width:92%;
+  transform:scale(.9);transition:.3s;text-align:center;
+}
+#enquireModal.open .enquire-box{transform:scale(1)}
+.enquire-box h3{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:8px}
+.enquire-box p{color:var(--muted);font-size:.9rem;line-height:1.65;margin-bottom:28px}
+.enquire-btns{display:flex;flex-direction:column;gap:12px}
+.enquire-btns a{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 24px;border-radius:12px;font-weight:700;font-size:.9rem;
+  letter-spacing:.5px;transition:.3s;
+}
+.enquire-wa{background:#25D366;color:#fff}
+.enquire-wa:hover{filter:brightness(1.1)}
+.enquire-call{background:var(--primary);color:#fff}
+.enquire-call:hover{background:var(--primary-dark)}
+.enquire-close{
+  background:none;border:none;color:var(--muted);cursor:pointer;
+  margin-top:16px;font-size:.85rem;font-weight:600;transition:.2s;
+}
+.enquire-close:hover{color:var(--text)}
+
+/* ── SUCCESS MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:6000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal-box{background:var(--dark2);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:50px;max-width:460px;width:90%;text-align:center;transform:scale(.9);transition:.3s}
+.modal-box{background:var(--dark2);border:1px solid rgba(192,48,26,0.25);border-radius:24px;padding:50px;max-width:460px;width:90%;text-align:center;transform:scale(.9);transition:.3s}
 .modal-overlay.open .modal-box{transform:scale(1)}
-.modal-icon{font-size:3.5rem;color:#4ade80;margin-bottom:20px}
+.modal-icon{font-size:3.5rem;color:#22c55e;margin-bottom:20px}
 .modal-box h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:12px}
 .modal-box p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:28px}
-.modal-close{background:var(--primary);color:#fff;border:none;padding:13px 32px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;transition:.3s;font-size:.9rem}
-.modal-close:hover{background:var(--primary-dark)}
+.modal-close{background:linear-gradient(135deg,var(--primary),var(--crimson));color:#fff;border:none;padding:13px 32px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;transition:.3s;font-size:.9rem}
+.modal-close:hover{filter:brightness(1.1)}
 
 /* ── ANIMATE UTILS ── */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
@@ -329,6 +607,9 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
 /* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .testi-card{flex:0 0 calc(50% - 12px)}
+}
 @media(max-width:900px){
   .footer-grid{grid-template-columns:1fr 1fr}
   .routes-inner{grid-template-columns:1fr}
@@ -337,6 +618,11 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
   .gallery-grid{grid-template-columns:1fr 1fr}
   .gal-item.big{grid-column:span 2;grid-row:span 1}
   .gal-item.big img,.gal-item img{height:180px}
+  .about-inner{grid-template-columns:1fr;gap:50px}
+  .owner-photo-frame{width:280px;margin:0 auto}
+  .owner-photo{height:340px}
+  .testi-card{flex:0 0 calc(100% - 0px)}
+  .avail-badge{display:none}
 }
 @media(max-width:700px){
   nav .nav-links,.nav-cta{display:none}
@@ -350,21 +636,43 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
   .gallery-grid{grid-template-columns:1fr}
   .gal-item.big{grid-column:span 1}
   .gal-item.big img,.gal-item img{height:200px}
-  .mobile-call{display:block}
-  .whatsapp-btn{bottom:80px}
-  .scroll-top{bottom:72px;right:8px}
+  .mobile-bar{display:grid}
+  .whatsapp-btn{bottom:84px}
+  .scroll-top{bottom:74px;right:8px}
   section{padding:70px 5%}
+  .form-note{grid-column:span 1}
 }
 </style>
 </head>
 <body>
 
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pre-logo">TRIPATHI<span>TRAVELS</span></div>
+  <div class="pre-dots">
+    <div class="pre-dot"></div>
+    <div class="pre-dot"></div>
+    <div class="pre-dot"></div>
+  </div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scrollProgress"></div>
+
+<!-- OFFER BANNER -->
+<div id="offerBanner">
+  <i class="fas fa-tag"></i>
+  <span>🎉 Special Pilgrimage Packages for Char Dham 2026 — Call Now to Book Early!</span>
+  <button class="close-banner" onclick="document.getElementById('offerBanner').style.display='none';document.getElementById('mainNav').classList.remove('banner-pushed')" aria-label="close">✕</button>
+</div>
+
 <!-- NAV -->
-<nav id="mainNav">
+<nav id="mainNav" class="banner-pushed">
   <a href="#home" class="logo">TRIPATHI<span>TRAVELS</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#why">Services</a></li>
     <li><a href="#fleet">Fleet</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#routes">Routes</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#testimonials">Reviews</a></li>
@@ -377,6 +685,7 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 <div class="mobile-nav" id="mobileNav">
   <a href="#why" onclick="closeMobileNav()">Services</a>
   <a href="#fleet" onclick="closeMobileNav()">Fleet</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
   <a href="#routes" onclick="closeMobileNav()">Routes</a>
   <a href="#gallery" onclick="closeMobileNav()">Gallery</a>
   <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
@@ -396,6 +705,10 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
       <a href="tel:+917007115728" class="btn-ghost"><i class="fas fa-phone" style="margin-right:8px"></i>Call Now</a>
     </div>
   </div>
+  <div class="avail-badge">
+    <div class="avail-num" id="availCount">12</div>
+    <div class="avail-label"><span class="avail-dot"></span>Available Today</div>
+  </div>
   <div class="hero-scroll">
     <div class="scroll-dot"></div>
     <span>Scroll</span>
@@ -406,7 +719,7 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 <div class="stats-bar">
   <div class="stat"><div class="stat-num" data-target="5000">0</div><div class="stat-label">Trips Completed</div></div>
   <div class="stat"><div class="stat-num" data-target="60">0</div><div class="stat-label">Vehicles in Fleet</div></div>
-  <div class="stat"><div class="stat-num" data-target="15">0</div><div class="stat-label">Years of Service</div></div>
+  <div class="stat"><div class="stat-num" data-target="16">0</div><div class="stat-label">Years of Service</div></div>
   <div class="stat"><div class="stat-num" data-target="12000">0</div><div class="stat-label">Happy Customers</div></div>
 </div>
 
@@ -479,7 +792,8 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
     <p class="section-sub">From intimate group travel to grand pilgrimage convoys — we have the perfect vehicle.</p>
   </div>
   <div class="fleet-grid">
-    <div class="fleet-card reveal">
+
+    <div class="fleet-card reveal" onclick="openEnquire('Sleeper AC Bus')">
       <div class="fleet-img">
         <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&q=80" alt="Luxury Sleeper AC Bus" loading="lazy">
         <div class="fleet-tag">Most Popular</div>
@@ -493,10 +807,11 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
           <span class="feature-pill">Reading Lights</span>
           <span class="feature-pill">Luggage Bay</span>
         </div>
-        <div class="fleet-price"><span>₹18</span><span>/ km onwards</span></div>
+        <button class="fleet-enquire-btn"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</button>
       </div>
     </div>
-    <div class="fleet-card reveal">
+
+    <div class="fleet-card reveal" onclick="openEnquire('Luxury Tempo Traveller')">
       <div class="fleet-img">
         <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" alt="Luxury Tempo Traveller" loading="lazy">
         <div class="fleet-tag">Premium</div>
@@ -510,10 +825,11 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
           <span class="feature-pill">USB Charging</span>
           <span class="feature-pill">Recliner Seats</span>
         </div>
-        <div class="fleet-price"><span>₹22</span><span>/ km onwards</span></div>
+        <button class="fleet-enquire-btn"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</button>
       </div>
     </div>
-    <div class="fleet-card reveal">
+
+    <div class="fleet-card reveal" onclick="openEnquire('Wedding Luxury Coach')">
       <div class="fleet-img">
         <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=800&q=80" alt="Wedding Luxury Coach" loading="lazy">
         <div class="fleet-tag">Wedding Special</div>
@@ -527,10 +843,11 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
           <span class="feature-pill">On-time Guarantee</span>
           <span class="feature-pill">Extra Luggage</span>
         </div>
-        <div class="fleet-price"><span>₹35</span><span>/ km onwards</span></div>
+        <button class="fleet-enquire-btn"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</button>
       </div>
     </div>
-    <div class="fleet-card reveal">
+
+    <div class="fleet-card reveal" onclick="openEnquire('Mini Bus Non-AC')">
       <div class="fleet-img">
         <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80" alt="Mini Bus" loading="lazy">
       </div>
@@ -542,10 +859,11 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
           <span class="feature-pill">Local Routes</span>
           <span class="feature-pill">Comfortable Seats</span>
         </div>
-        <div class="fleet-price"><span>₹12</span><span>/ km onwards</span></div>
+        <button class="fleet-enquire-btn"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</button>
       </div>
     </div>
-    <div class="fleet-card reveal">
+
+    <div class="fleet-card reveal" onclick="openEnquire('Pilgrimage Special Coach')">
       <div class="fleet-img">
         <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80" alt="Pilgrimage Coaches" loading="lazy">
         <div class="fleet-tag">Pilgrimage</div>
@@ -558,14 +876,55 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
           <span class="feature-pill">Route Expert</span>
           <span class="feature-pill">Flexible Schedule</span>
         </div>
-        <div class="fleet-price"><span>₹20</span><span>/ km onwards</span></div>
+        <button class="fleet-enquire-btn"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</button>
       </div>
     </div>
-    <div class="fleet-card reveal" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 36px">
+
+    <div class="fleet-card reveal" style="background:linear-gradient(135deg,var(--crimson),var(--primary));border-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 36px;cursor:default"
+         onclick="event.stopPropagation()">
       <i class="fas fa-phone-alt" style="font-size:2.5rem;color:#fff;opacity:.8;margin-bottom:20px"></i>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px">Need a Custom Quote?</h3>
-      <p style="color:rgba(255,255,255,0.8);font-size:.88rem;line-height:1.7;margin-bottom:24px">Tell us your requirement and we'll build a package just for you.</p>
-      <a href="tel:+917007115728" class="btn-ghost" style="border-color:rgba(255,255,255,0.6);color:#fff;padding:12px 28px;font-size:.82rem">Call +91 7007115728</a>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:12px">Need a Custom Quote?</h3>
+      <p style="color:rgba(255,255,255,0.82);font-size:.88rem;line-height:1.7;margin-bottom:20px">Tell us your requirement and we'll build a package just for you.</p>
+      <a href="tel:+917007115728" class="btn-ghost" style="border-color:rgba(255,255,255,0.6);color:#fff;padding:11px 24px;font-size:.8rem;margin-bottom:10px;display:block">
+        <i class="fas fa-phone" style="margin-right:6px"></i>+91 7007115728
+      </a>
+      <a href="tel:+919415287689" class="btn-ghost" style="border-color:rgba(255,255,255,0.6);color:#fff;padding:11px 24px;font-size:.8rem;display:block">
+        <i class="fas fa-phone" style="margin-right:6px"></i>+91 9415287689
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT OWNER -->
+<section id="about">
+  <div class="about-inner">
+    <div class="owner-photo-wrap reveal-left">
+      <div class="owner-photo-frame">
+        <img src="img.png" alt="Rangeshwar Nath Tripathi – Founder, Tripathi Travels" class="owner-photo" loading="lazy">
+        <div class="owner-red-badge"><i class="fas fa-award" style="margin-right:6px"></i> Founder & MD</div>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label">Meet the Founder</div>
+      <h2 class="owner-name">Rangeshwar Nath Tripathi</h2>
+      <div class="owner-title">Founder & Managing Director, Tripathi Travels</div>
+      <p class="owner-bio">
+        With over 16 years of experience in the transport industry, Shri Rangeshwar Nath Tripathi built Tripathi Travels from the ground up — starting with a single vehicle and an unwavering commitment to service. Today, under his personal leadership, the fleet has grown to 60+ vehicles serving thousands of families, pilgrims, and corporate clients across North India every year.
+        <br><br>
+        His vision is simple: every passenger should reach their destination safely, comfortably, and on time — as if they were family. That philosophy is felt in every journey Tripathi Travels operates.
+      </p>
+      <div class="owner-stats">
+        <div class="owner-stat"><div class="num">16+</div><div class="lbl">Years Leading</div></div>
+        <div class="owner-stat"><div class="num">60+</div><div class="lbl">Vehicles Managed</div></div>
+        <div class="owner-stat"><div class="num">5000+</div><div class="lbl">Trips Delivered</div></div>
+        <div class="owner-stat"><div class="num">12K+</div><div class="lbl">Happy Customers</div></div>
+      </div>
+      <div class="owner-contacts">
+        <div class="owner-contact-item"><i class="fas fa-phone"></i><a href="tel:+917007115728" style="color:inherit">+91 7007115728</a></div>
+        <div class="owner-contact-item"><i class="fas fa-phone"></i><a href="tel:+919415287689" style="color:inherit">+91 9415287689</a></div>
+        <div class="owner-contact-item"><i class="fas fa-map-marker-alt"></i><span>Rangeela Palace, Rampur, Muftiganj, Jaunpur – UP</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -577,25 +936,25 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
     <h2 class="section-title">Journey Snapshots</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gal-item big reveal">
+    <div class="gal-item big reveal" onclick="openLightbox(this)">
       <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&q=80" alt="Road trip India" loading="lazy">
-      <div class="gal-overlay"></div>
+      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
     </div>
-    <div class="gal-item reveal">
+    <div class="gal-item reveal" onclick="openLightbox(this)">
       <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=600&q=80" alt="Varanasi ghats" loading="lazy">
-      <div class="gal-overlay"></div>
+      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
     </div>
-    <div class="gal-item reveal">
+    <div class="gal-item reveal" onclick="openLightbox(this)">
       <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80" alt="India highway" loading="lazy">
-      <div class="gal-overlay"></div>
+      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
     </div>
-    <div class="gal-item reveal">
+    <div class="gal-item reveal" onclick="openLightbox(this)">
       <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Mountain road" loading="lazy">
-      <div class="gal-overlay"></div>
+      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
     </div>
-    <div class="gal-item reveal">
+    <div class="gal-item reveal" onclick="openLightbox(this)">
       <img src="https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=600&q=80" alt="India temple" loading="lazy">
-      <div class="gal-overlay"></div>
+      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
     </div>
   </div>
 </section>
@@ -608,16 +967,34 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
       <h2 class="section-title">Where We Travel</h2>
       <p class="section-sub" style="margin-bottom:0">Serving hundreds of routes across North India. Pilgrimage, corporate, and leisure — all covered.</p>
       <div class="route-list">
-        <div class="route-item"><div class="route-cities"><span>Jaunpur</span><i class="fas fa-exchange-alt route-arrow"></i><span>Ayodhya</span></div><div class="route-dist">~130 km</div></div>
-        <div class="route-item"><div class="route-cities"><span>Varanasi</span><i class="fas fa-exchange-alt route-arrow"></i><span>Delhi</span></div><div class="route-dist">~820 km</div></div>
-        <div class="route-item"><div class="route-cities"><span>Lucknow</span><i class="fas fa-exchange-alt route-arrow"></i><span>Prayagraj</span></div><div class="route-dist">~210 km</div></div>
-        <div class="route-item"><div class="route-cities"><span>Jaunpur</span><i class="fas fa-exchange-alt route-arrow"></i><span>Varanasi</span></div><div class="route-dist">~58 km</div></div>
-        <div class="route-item"><div class="route-cities"><span>Mathura</span><i class="fas fa-exchange-alt route-arrow"></i><span>Haridwar</span></div><div class="route-dist">~270 km</div></div>
-        <div class="route-item"><div class="route-cities"><span>Mumbai</span><i class="fas fa-exchange-alt route-arrow"></i><span>Goa</span></div><div class="route-dist">~600 km</div></div>
+        <div class="route-item" onclick="openRouteEnquire('Jaunpur','Ayodhya','~130 km')">
+          <div class="route-cities"><span>Jaunpur</span><i class="fas fa-exchange-alt route-arrow"></i><span>Ayodhya</span></div>
+          <div class="route-dist">~130 km</div>
+        </div>
+        <div class="route-item" onclick="openRouteEnquire('Varanasi','Delhi','~820 km')">
+          <div class="route-cities"><span>Varanasi</span><i class="fas fa-exchange-alt route-arrow"></i><span>Delhi</span></div>
+          <div class="route-dist">~820 km</div>
+        </div>
+        <div class="route-item" onclick="openRouteEnquire('Lucknow','Prayagraj','~210 km')">
+          <div class="route-cities"><span>Lucknow</span><i class="fas fa-exchange-alt route-arrow"></i><span>Prayagraj</span></div>
+          <div class="route-dist">~210 km</div>
+        </div>
+        <div class="route-item" onclick="openRouteEnquire('Jaunpur','Varanasi','~58 km')">
+          <div class="route-cities"><span>Jaunpur</span><i class="fas fa-exchange-alt route-arrow"></i><span>Varanasi</span></div>
+          <div class="route-dist">~58 km</div>
+        </div>
+        <div class="route-item" onclick="openRouteEnquire('Mathura','Haridwar','~270 km')">
+          <div class="route-cities"><span>Mathura</span><i class="fas fa-exchange-alt route-arrow"></i><span>Haridwar</span></div>
+          <div class="route-dist">~270 km</div>
+        </div>
+        <div class="route-item" onclick="openRouteEnquire('Mumbai','Goa','~600 km')">
+          <div class="route-cities"><span>Mumbai</span><i class="fas fa-exchange-alt route-arrow"></i><span>Goa</span></div>
+          <div class="route-dist">~600 km</div>
+        </div>
       </div>
     </div>
-    <div class="routes-map reveal-right">
-      <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80" alt="India travel map" loading="lazy" style="height:480px;object-fit:cover">
+    <div class="reveal-right" style="border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.06)">
+      <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80" alt="India travel map" loading="lazy" style="width:100%;height:480px;object-fit:cover;filter:saturate(0.7) brightness(0.9)">
     </div>
   </div>
 </section>
@@ -627,16 +1004,20 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
   <div class="booking-inner">
     <div class="reveal-left">
       <div class="section-label">Get a Quote</div>
-      <h2 class="booking-info" style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;line-height:1.1;margin-bottom:16px">Ready to Plan<br>Your Journey?</h2>
-      <p style="color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:36px">Fill the form and our travel expert will call you within 5 minutes with the best price. No spam, no obligation.</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;line-height:1.1;margin-bottom:16px">Ready to Plan<br>Your Journey?</h2>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:36px">Fill the form and details go directly to our WhatsApp — get a reply within minutes. No spam, no obligation.</p>
       <div class="contact-list">
         <div class="contact-item">
           <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-          <div><small>Call Us Anytime</small><strong>+91 7007115728</strong></div>
+          <div><small>Primary Line</small><strong><a href="tel:+917007115728" style="color:inherit">+91 7007115728</a></strong></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div><small>Alternate Line</small><strong><a href="tel:+919415287689" style="color:inherit">+91 9415287689</a></strong></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-          <div><small>WhatsApp</small><strong>+91 7007115728</strong></div>
+          <div><small>WhatsApp</small><strong><a href="https://wa.me/917007115728" style="color:inherit">+91 7007115728</a></strong></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -648,27 +1029,36 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
         </div>
       </div>
     </div>
+
     <div class="booking-form reveal-right">
       <form class="form-grid" id="bookingForm" onsubmit="handleSubmit(event)">
         <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" name="mobile" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+        <div class="form-group">
           <label>Pickup Location</label>
-          <input type="text" placeholder="Enter city / village" required>
+          <input type="text" name="pickup" placeholder="Enter city / village" required>
         </div>
         <div class="form-group">
           <label>Destination</label>
-          <input type="text" placeholder="Where to?" required>
+          <input type="text" name="dest" placeholder="Where to?" required>
         </div>
         <div class="form-group">
           <label>Departure Date</label>
-          <input type="date" required>
+          <input type="date" name="date" required>
         </div>
         <div class="form-group">
           <label>Return Date (optional)</label>
-          <input type="date">
+          <input type="date" name="return">
         </div>
         <div class="form-group">
           <label>Vehicle Type</label>
-          <select>
+          <select name="vehicle">
             <option>Sleeper AC Bus</option>
             <option>Luxury Tempo Traveller</option>
             <option>Wedding Coach</option>
@@ -679,15 +1069,18 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
         </div>
         <div class="form-group">
           <label>Total Passengers</label>
-          <input type="number" placeholder="e.g. 25" min="1" required>
+          <input type="number" name="passengers" placeholder="e.g. 25" min="1" required>
         </div>
         <div class="form-group full">
-          <label>Mobile Number</label>
-          <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+          <label>Special Requirements (optional)</label>
+          <textarea name="notes" placeholder="Any special needs, stops, or requests..."></textarea>
         </div>
-        <button type="submit" class="form-submit"><i class="fas fa-paper-plane" style="margin-right:8px"></i>Get Instant Price Quote</button>
+        <button type="submit" class="form-submit">
+          <i class="fab fa-whatsapp" style="font-size:1.2rem"></i>
+          Send via WhatsApp & Get Quote
+        </button>
+        <p class="form-note"><i class="fas fa-lock" style="color:var(--gold);margin-right:4px"></i> Your details are shared only with Tripathi Travels. No spam.</p>
       </form>
-      <div class="success-msg" id="successMsg"><i class="fas fa-check-circle" style="margin-right:8px;color:#4ade80"></i>Request received! Our travel expert will call you within 5 minutes.</div>
     </div>
   </div>
 </section>
@@ -699,75 +1092,54 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
     <h2 class="section-title">Happy Journeys</h2>
     <p class="section-sub">Real words from real travellers who trusted Tripathi Travels.</p>
   </div>
-  <div class="testi-grid">
-    <div class="testi-card reveal">
-      <div class="testi-top">
-        <div class="stars">★★★★★</div>
-        <div class="quote-mark">"</div>
+  <div class="testi-carousel reveal">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card">
+        <div class="testi-top"><div class="stars">★★★★★</div><div class="quote-mark">"</div></div>
+        <p class="testi-text">The cleanliness of the bus was amazing. Best service from Jaunpur to Ayodhya for our family group. Driver was extremely courteous. Reached exactly on time — not a minute late!</p>
+        <div class="testi-author"><div class="author-avatar">RS</div><div><div class="author-name">Rakesh Sharma</div><div class="author-place">Varanasi, UP</div></div></div>
       </div>
-      <p class="testi-text">The cleanliness of the bus was amazing. Best service from Jaunpur to Ayodhya for our family group. Driver was extremely courteous. Reached exactly on time — not a minute late!</p>
-      <div class="testi-author">
-        <div class="author-avatar">RS</div>
-        <div><div class="author-name">Rakesh Sharma</div><div class="author-place">Varanasi, UP</div></div>
+      <div class="testi-card">
+        <div class="testi-top"><div class="stars">★★★★★</div><div class="quote-mark">"</div></div>
+        <p class="testi-text">Booked a Traveller for a wedding. The driver was very professional and knew all the routes perfectly. Zero headache in booking and the vehicle was spotless. Highly recommend!</p>
+        <div class="testi-author"><div class="author-avatar">SG</div><div><div class="author-name">Sunita Gupta</div><div class="author-place">Lucknow, UP</div></div></div>
       </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-top">
-        <div class="stars">★★★★★</div>
-        <div class="quote-mark">"</div>
+      <div class="testi-card">
+        <div class="testi-top"><div class="stars">★★★★★</div><div class="quote-mark">"</div></div>
+        <p class="testi-text">Very reliable service. Used them for a school heritage tour to Varanasi. High level of safety, punctuality maintained throughout. Parents were fully satisfied. Will book again!</p>
+        <div class="testi-author"><div class="author-avatar">AV</div><div><div class="author-name">Dr. Amit Verma</div><div class="author-place">Jaunpur, UP</div></div></div>
       </div>
-      <p class="testi-text">Booked a Traveller for a wedding. The driver was very professional and knew all the routes perfectly. Zero headache in booking and the vehicle was spotless. Highly recommend!</p>
-      <div class="testi-author">
-        <div class="author-avatar">SG</div>
-        <div><div class="author-name">Sunita Gupta</div><div class="author-place">Lucknow, UP</div></div>
+      <div class="testi-card">
+        <div class="testi-top"><div class="stars">★★★★★</div><div class="quote-mark">"</div></div>
+        <p class="testi-text">Took their pilgrimage package to Haridwar from Jaunpur. The driver knew all the dham routes, was very helpful and patient. Truly a wonderful experience at a very reasonable price.</p>
+        <div class="testi-author"><div class="author-avatar">PM</div><div><div class="author-name">Pushpa Mishra</div><div class="author-place">Muftiganj, Jaunpur</div></div></div>
       </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-top">
-        <div class="stars">★★★★★</div>
-        <div class="quote-mark">"</div>
+      <div class="testi-card">
+        <div class="testi-top"><div class="stars">★★★★★</div><div class="quote-mark">"</div></div>
+        <p class="testi-text">Corporate event transfer handled flawlessly. 3 buses, 120 people, Varanasi to Prayagraj. All arrived together, on schedule. Rangeshwarji personally coordinated. Outstanding professionalism.</p>
+        <div class="testi-author"><div class="author-avatar">KS</div><div><div class="author-name">Kunal Singh</div><div class="author-place">Allahabad, UP</div></div></div>
       </div>
-      <p class="testi-text">Very reliable service. Used them for a school heritage tour to Varanasi. High level of safety, punctuality maintained throughout. Parents were fully satisfied. Will book again!</p>
-      <div class="testi-author">
-        <div class="author-avatar">AV</div>
-        <div><div class="author-name">Dr. Amit Verma</div><div class="author-place">Jaunpur, UP</div></div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-top">
-        <div class="stars">★★★★★</div>
-        <div class="quote-mark">"</div>
-      </div>
-      <p class="testi-text">Took their pilgrimage package to Haridwar from Jaunpur. The driver knew all the dham routes, was very helpful and patient. Truly a wonderful experience at a very reasonable price.</p>
-      <div class="testi-author">
-        <div class="author-avatar">PM</div>
-        <div><div class="author-name">Pushpa Mishra</div><div class="author-place">Muftiganj, Jaunpur</div></div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-top">
-        <div class="stars">★★★★★</div>
-        <div class="quote-mark">"</div>
-      </div>
-      <p class="testi-text">Corporate event transfer handled flawlessly. 3 buses, 120 people, Varanasi to Prayagraj. All arrived together, on schedule. Rangeshwarji personally coordinated. Outstanding professionalism.</p>
-      <div class="testi-author">
-        <div class="author-avatar">KS</div>
-        <div><div class="author-name">Kunal Singh</div><div class="author-place">Allahabad, UP</div></div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-top">
-        <div class="stars">★★★★☆</div>
-        <div class="quote-mark">"</div>
-      </div>
-      <p class="testi-text">Good value for money on the Delhi–Varanasi route. Bus was clean, AC worked great throughout the journey. Would have been 5 stars if they had a quick stop at a better dhaba!</p>
-      <div class="testi-author">
-        <div class="author-avatar">NT</div>
-        <div><div class="author-name">Neha Tiwari</div><div class="author-place">New Delhi</div></div>
+      <div class="testi-card">
+        <div class="testi-top"><div class="stars">★★★★☆</div><div class="quote-mark">"</div></div>
+        <p class="testi-text">Good value for money on the Delhi–Varanasi route. Bus was clean, AC worked great throughout the journey. Would have been 5 stars if they had a quick stop at a better dhaba!</p>
+        <div class="testi-author"><div class="author-avatar">NT</div><div><div class="author-name">Neha Tiwari</div><div class="author-place">New Delhi</div></div></div>
       </div>
     </div>
   </div>
+  <div class="testi-controls">
+    <button class="testi-btn" onclick="testiPrev()"><i class="fas fa-chevron-left"></i></button>
+    <div class="testi-dots" id="testiDots"></div>
+    <button class="testi-btn" onclick="testiNext()"><i class="fas fa-chevron-right"></i></button>
+  </div>
 </section>
+
+<!-- MAP -->
+<div id="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115258.00577617!2d82.6221!3d25.7464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3985c5a6c6f79c47%3A0x123456789!2sMuftiganj%2C+Jaunpur%2C+Uttar+Pradesh!5e0!3m2!1sen!2sin!4v1"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tripathi Travels Location – Jaunpur, UP">
+  </iframe>
+</div>
 
 <!-- FAQ -->
 <section id="faq">
@@ -778,46 +1150,36 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
   </div>
   <div class="faq-grid" id="faqGrid">
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        What is the minimum booking distance?
-        <div class="faq-icon"><i class="fas fa-plus"></i></div>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">What is the minimum booking distance?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
       <div class="faq-answer"><div class="faq-answer-inner">We accept bookings for any distance — even local city transfers. There is no minimum distance requirement. Pricing is discussed based on trip details.</div></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        How far in advance should I book?
-        <div class="faq-icon"><i class="fas fa-plus"></i></div>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">How far in advance should I book?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
       <div class="faq-answer"><div class="faq-answer-inner">We recommend booking at least 3–5 days in advance for large group bookings. For urgent requirements, call us directly — we often accommodate last-minute bookings too.</div></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Are tolls and driver allowance included?
-        <div class="faq-icon"><i class="fas fa-plus"></i></div>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">Are tolls and driver allowance included?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
       <div class="faq-answer"><div class="faq-answer-inner">Tolls, parking, and driver night allowance are discussed transparently at the time of quotation. We don't add hidden surprises — everything is disclosed before you confirm.</div></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Can we hire for multi-day outstation trips?
-        <div class="faq-icon"><i class="fas fa-plus"></i></div>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">Can we hire for multi-day outstation trips?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
       <div class="faq-answer"><div class="faq-answer-inner">Absolutely! Multi-day outstation packages are our specialty. Whether it's a 3-day pilgrimage or a week-long tour, we provide the vehicle and driver for the entire duration.</div></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Do you provide vehicles for weddings?
-        <div class="faq-icon"><i class="fas fa-plus"></i></div>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">Do you provide vehicles for weddings?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
       <div class="faq-answer"><div class="faq-answer-inner">Yes! We have a dedicated Wedding Special package with decorated coaches, uniformed drivers, and full coordination for baraat, guest transfers, and event logistics.</div></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        What is the cancellation policy?
-        <div class="faq-icon"><i class="fas fa-plus"></i></div>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">What is the cancellation policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
       <div class="faq-answer"><div class="faq-answer-inner">Cancellations made more than 48 hours before departure receive a full refund. Within 48 hours, a partial charge may apply. Please call us to discuss — we are always flexible and understanding.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">Do you operate outside Uttar Pradesh?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes, we operate Pan-India routes. Popular long-distance routes include Delhi, Mumbai, Haridwar, Rishikesh, Goa, and more. All-India permits are in place for our fleet.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">How do I get a price quote quickly?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Easiest way: fill the booking form above and it sends your details directly to our WhatsApp. Or call +91 7007115728 or +91 9415287689 — we give quotes verbally within minutes.</div></div>
     </div>
   </div>
 </section>
@@ -827,8 +1189,9 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#home" class="logo">TRIPATHI<span>TRAVELS</span></a>
+      <div class="footer-director">MD: Rangeshwar Nath Tripathi</div>
       <p>Premium group transportation since 2008. Serving pilgrims, families, schools, and corporates across North India with pride and punctuality.</p>
-      <div class="social-links" style="margin-top:24px">
+      <div class="social-links">
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="https://wa.me/917007115728" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -840,6 +1203,7 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
       <ul class="footer-links">
         <li><a href="#why">Our Services</a></li>
         <li><a href="#fleet">Fleet & Pricing</a></li>
+        <li><a href="#about">About the Founder</a></li>
         <li><a href="#routes">Popular Routes</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#testimonials">Reviews</a></li>
@@ -862,6 +1226,7 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
       <h4>Contact Us</h4>
       <ul class="footer-links">
         <li><a href="tel:+917007115728"><i class="fas fa-phone" style="color:var(--primary);margin-right:8px"></i>+91 7007115728</a></li>
+        <li><a href="tel:+919415287689"><i class="fas fa-phone" style="color:var(--primary);margin-right:8px"></i>+91 9415287689</a></li>
         <li><a href="https://wa.me/917007115728"><i class="fab fa-whatsapp" style="color:var(--primary);margin-right:8px"></i>WhatsApp Us</a></li>
         <li style="color:var(--muted);font-size:.85rem;line-height:1.6"><i class="fas fa-map-marker-alt" style="color:var(--primary);margin-right:8px"></i>Rangeela Palace, Rampur,<br>Muftiganj, Jaunpur – UP</li>
         <li style="color:var(--muted);font-size:.85rem"><i class="fas fa-clock" style="color:var(--primary);margin-right:8px"></i>Available 24 × 7</li>
@@ -869,33 +1234,106 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Tripathi Travels. All Rights Reserved. | Managing Director: Rangeshwar Nath Tripathi</p>
+    <p>© 2026 Tripathi Travels. All Rights Reserved. | Founder & MD: Rangeshwar Nath Tripathi</p>
     <p style="color:var(--muted);font-size:.75rem">Designed for excellence. Trusted for reliability.</p>
   </div>
 </footer>
 
 <!-- FLOATING BUTTONS -->
-<a href="https://wa.me/917007115728?text=Hi%20Tripathi%20Travels!%20I%20want%20to%20book%20a%20vehicle." class="whatsapp-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
-<a href="tel:+917007115728" class="mobile-call"><i class="fas fa-phone-alt" style="margin-right:8px"></i>Call Now to Book — +91 7007115728</a>
+<a href="https://wa.me/917007115728?text=Hi%20Tripathi%20Travels!%20I%20want%20to%20book%20a%20vehicle." class="whatsapp-btn" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <div class="whatsapp-tooltip">Chat with us!</div>
+</a>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <div class="scroll-ring" id="scrollRing"></div>
+  <i class="fas fa-arrow-up" style="position:relative;z-index:1"></i>
+</button>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="mobile-bar">
+  <a href="tel:+917007115728" class="mb-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+  <a href="https://wa.me/917007115728?text=Hi%20Tripathi%20Travels!%20I%20want%20to%20book%20a%20vehicle." class="mb-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</div>
+
+<!-- ENQUIRE MODAL -->
+<div id="enquireModal" onclick="if(event.target===this)closeEnquire()">
+  <div class="enquire-box">
+    <div style="font-size:2.5rem;margin-bottom:16px">🚌</div>
+    <h3 id="enquireTitle">Enquire about Vehicle</h3>
+    <p id="enquireDesc">Connect with us instantly to get a price and check availability.</p>
+    <div class="enquire-btns">
+      <a id="enquireWaLink" href="#" class="enquire-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a>
+      <a href="tel:+917007115728" class="enquire-call"><i class="fas fa-phone"></i> Call +91 7007115728</a>
+    </div>
+    <button class="enquire-close" onclick="closeEnquire()">No thanks, I'll browse more</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="if(event.target===this||event.target.id==='lightboxClose')closeLightbox()">
+  <button id="lightboxClose">✕</button>
+  <img id="lightboxImg" src="" alt="Gallery image">
+</div>
 
 <!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
     <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
     <h3>Request Sent!</h3>
-    <p>Thank you for choosing Tripathi Travels. Our travel expert will call you back within <strong>5 minutes</strong> with the best price quote.</p>
+    <p>Your booking details have been sent to Tripathi Travels on WhatsApp. Rangeshwarji or his team will respond shortly with the best price for you.</p>
     <button class="modal-close" onclick="closeModal()">Great, Thanks!</button>
   </div>
 </div>
 
 <script>
-// ── NAV SCROLL
-const nav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>60);
-  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
+// ── PRELOADER
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('preloader').classList.add('hide');
+  },1200);
 });
+
+// ── SCROLL PROGRESS + NAV SCROLL
+const navEl=document.getElementById('mainNav');
+const prog=document.getElementById('scrollProgress');
+const scrollTopBtn=document.getElementById('scrollTop');
+const scrollRing=document.getElementById('scrollRing');
+
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY;
+  const total=document.body.scrollHeight-window.innerHeight;
+  const pct=(scrolled/total)*100;
+  prog.style.width=pct+'%';
+  scrollRing.style.setProperty('--p',pct+'%');
+
+  navEl.classList.toggle('scrolled',scrolled>60);
+  scrollTopBtn.classList.toggle('show',scrolled>400);
+
+  // Active nav link
+  document.querySelectorAll('section[id],div[id]').forEach(sec=>{
+    const top=sec.offsetTop-100;
+    const bot=top+sec.offsetHeight;
+    if(scrolled>=top&&scrolled<bot){
+      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+      const link=document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+      if(link)link.classList.add('active');
+    }
+  });
+});
+
+// ── OFFER BANNER HEIGHT ADJUSTMENT
+function adjustNavForBanner(){
+  const banner=document.getElementById('offerBanner');
+  if(banner&&banner.style.display!=='none'){
+    navEl.classList.add('banner-pushed');
+    navEl.style.top=banner.offsetHeight+'px';
+  } else {
+    navEl.classList.remove('banner-pushed');
+    navEl.style.top='0';
+  }
+}
+adjustNavForBanner();
 
 // ── BURGER MENU
 const burger=document.getElementById('burger');
@@ -904,7 +1342,10 @@ burger.addEventListener('click',()=>{
   burger.classList.toggle('open');
   mobileNav.classList.toggle('open');
 });
-function closeMobileNav(){burger.classList.remove('open');mobileNav.classList.remove('open')}
+function closeMobileNav(){
+  burger.classList.remove('open');
+  mobileNav.classList.remove('open');
+}
 
 // ── COUNTER ANIMATION
 function animateCounter(el,target){
@@ -933,7 +1374,7 @@ if(statsBar)statsObserver.observe(statsBar);
 // ── SCROLL REVEAL
 const revealObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.12});
+},{threshold:.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>revealObserver.observe(el));
 
 // ── FAQ ACCORDION
@@ -944,21 +1385,130 @@ function toggleFaq(el){
   if(!isOpen)item.classList.add('open');
 }
 
-// ── FORM SUBMIT
+// ── WHATSAPP FORM SUBMIT
 function handleSubmit(e){
   e.preventDefault();
+  const f=e.target;
+  const name=f.querySelector('[name="name"]').value.trim();
+  const mobile=f.querySelector('[name="mobile"]').value.trim();
+  const pickup=f.querySelector('[name="pickup"]').value.trim();
+  const dest=f.querySelector('[name="dest"]').value.trim();
+  const date=f.querySelector('[name="date"]').value;
+  const ret=f.querySelector('[name="return"]').value;
+  const vehicle=f.querySelector('[name="vehicle"]').value;
+  const passengers=f.querySelector('[name="passengers"]').value;
+  const notes=f.querySelector('[name="notes"]').value.trim();
+
+  let msg=`🚌 *New Booking Enquiry — Tripathi Travels*\n\n`;
+  msg+=`👤 *Name:* ${name}\n`;
+  msg+=`📱 *Contact:* ${mobile}\n`;
+  msg+=`📍 *Pickup:* ${pickup}\n`;
+  msg+=`🏁 *Destination:* ${dest}\n`;
+  msg+=`📅 *Departure:* ${date}\n`;
+  if(ret) msg+=`🔄 *Return:* ${ret}\n`;
+  msg+=`🚌 *Vehicle:* ${vehicle}\n`;
+  msg+=`👥 *Passengers:* ${passengers}\n`;
+  if(notes) msg+=`📝 *Notes:* ${notes}\n`;
+  msg+=`\n_Sent from TripathiTravels.com_`;
+
+  window.open(`https://wa.me/917007115728?text=${encodeURIComponent(msg)}`,'_blank');
+  f.reset();
   document.getElementById('modalOverlay').classList.add('open');
-  e.target.reset();
 }
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open')}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+}
 document.getElementById('modalOverlay').addEventListener('click',function(e){
   if(e.target===this)closeModal();
 });
 
+// ── FLEET ENQUIRE MODAL
+function openEnquire(vehicleName){
+  document.getElementById('enquireTitle').textContent='Enquire: '+vehicleName;
+  document.getElementById('enquireDesc').textContent='Send us a WhatsApp message about the '+vehicleName+' and we\'ll send you availability and pricing within minutes.';
+  const msg=encodeURIComponent(`Hi Tripathi Travels! I'm interested in the *${vehicleName}*. Please share availability and pricing. 🙏`);
+  document.getElementById('enquireWaLink').href=`https://wa.me/917007115728?text=${msg}`;
+  document.getElementById('enquireModal').classList.add('open');
+}
+function closeEnquire(){
+  document.getElementById('enquireModal').classList.remove('open');
+}
+
+// ── ROUTE CLICK → WHATSAPP
+function openRouteEnquire(from,to,dist){
+  const msg=encodeURIComponent(`Hi Tripathi Travels! I need a vehicle from *${from}* to *${to}* (${dist}). Please share details and pricing. 🙏`);
+  window.open(`https://wa.me/917007115728?text=${msg}`,'_blank');
+}
+
+// ── GALLERY LIGHTBOX
+function openLightbox(el){
+  const img=el.querySelector('img');
+  document.getElementById('lightboxImg').src=img.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── TESTIMONIAL CAROUSEL
+const track=document.getElementById('testiTrack');
+const cards=track.querySelectorAll('.testi-card');
+const dotsContainer=document.getElementById('testiDots');
+let currentTesti=0;
+let perView=window.innerWidth>1100?3:window.innerWidth>700?2:1;
+let totalSlides=Math.ceil(cards.length/perView);
+let autoTimer;
+
+// Build dots
+function buildDots(){
+  dotsContainer.innerHTML='';
+  perView=window.innerWidth>1100?3:window.innerWidth>700?2:1;
+  totalSlides=Math.ceil(cards.length/perView);
+  for(let i=0;i<totalSlides;i++){
+    const d=document.createElement('div');
+    d.className='testi-dot'+(i===currentTesti?' active':'');
+    d.onclick=()=>goTesti(i);
+    dotsContainer.appendChild(d);
+  }
+}
+function goTesti(idx){
+  currentTesti=idx;
+  const cardWidth=cards[0].offsetWidth+24;
+  track.style.transform=`translateX(-${cardWidth*idx*perView}px)`;
+  document.querySelectorAll('.testi-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function testiNext(){
+  goTesti((currentTesti+1)%totalSlides);
+}
+function testiPrev(){
+  goTesti((currentTesti-1+totalSlides)%totalSlides);
+}
+function startAutoTesti(){
+  autoTimer=setInterval(testiNext,4500);
+}
+buildDots();
+startAutoTesti();
+window.addEventListener('resize',()=>{
+  buildDots();
+  goTesti(0);
+});
+track.addEventListener('mouseenter',()=>clearInterval(autoTimer));
+track.addEventListener('mouseleave',startAutoTesti);
+
+// ── AVAILABILITY BADGE FLICKER
+const availNums=[8,10,12,14,9,11,13];
+let availIdx=0;
+setInterval(()=>{
+  availIdx=(availIdx+1)%availNums.length;
+  document.getElementById('availCount').textContent=availNums[availIdx];
+},5000);
+
 // ── SET MIN DATE
-const dateInputs=document.querySelectorAll('input[type="date"]');
 const today=new Date().toISOString().split('T')[0];
-dateInputs.forEach(d=>d.setAttribute('min',today));
+document.querySelectorAll('input[type="date"]').forEach(d=>d.setAttribute('min',today));
 </script>
 </body>
 </html>
