@@ -752,7 +752,7 @@ section{padding:100px 6%}
 
 .fleet-img{height:210px;overflow:hidden;position:relative}
 
-.fleet-img img{height:100%;object-fit:cover;transition:.5s}
+.fleet-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:.5s}
 
 .fleet-card:hover .fleet-img img{transform:scale(1.08)}
 
@@ -1114,7 +1114,7 @@ section{padding:100px 6%}
 
 .gal-item:hover img{transform:scale(1.06)}
 
-.gal-item.big{grid-column:span 2;grid-row:span 2}
+.gal-item.big{grid-column:span 2;grid-row:span 2;min-height:320px}
 
 .gal-item img{height:220px}
 
@@ -1471,6 +1471,30 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
   .form-note{grid-column:span 1}
 
 }
+
+
+/* ── GALLERY SLIDER ──────────────────────────────────── */
+.gal-slider-wrap{position:relative;width:100%;max-width:1100px;margin:0 auto;border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.gal-slider{display:flex;width:100%;height:520px;transition:none;position:relative}
+.gal-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;cursor:pointer}
+.gal-slide.active{opacity:1;z-index:2}
+.gal-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.gal-slide-caption{position:absolute;bottom:0;left:0;right:0;padding:16px 24px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:.88rem;font-weight:500;letter-spacing:.5px;text-align:center}
+.gal-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(0,0,0,.45);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:1.1rem;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+.gal-arrow:hover{background:var(--primary)}
+.gal-prev{left:14px}
+.gal-next{right:14px}
+.gal-dots{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10}
+.gal-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.2s;border:none}
+.gal-dot.active{background:var(--primary);transform:scale(1.3)}
+.gal-thumbs{display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:thin;scrollbar-color:var(--primary) transparent;margin-top:10px}
+.gal-thumbs::-webkit-scrollbar{height:4px}
+.gal-thumbs::-webkit-scrollbar-track{background:transparent}
+.gal-thumbs::-webkit-scrollbar-thumb{background:var(--primary);border-radius:2px}
+.gal-thumb{flex:0 0 80px;height:56px;border-radius:6px;overflow:hidden;cursor:pointer;opacity:.5;transition:.2s;border:2px solid transparent}
+.gal-thumb.active{opacity:1;border-color:var(--primary)}
+.gal-thumb img{width:100%;height:100%;object-fit:cover}
+@media(max-width:768px){.gal-slider{height:280px}.gal-slide-caption{font-size:.78rem;padding:10px 14px}.gal-thumbs{display:none}}
 
 </style>
 
@@ -2005,56 +2029,89 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 <section id="gallery" style="padding-top:0">
 
   <div class="section-head reveal" style="margin-bottom:36px">
-
     <div class="section-label" data-en="Gallery" data-hi="गैलरी">Gallery</div>
-
     <h2 class="section-title" data-en="Journey Snapshots" data-hi="यात्रा की झलकियां">Journey Snapshots</h2>
+    <p class="section-sub" style="color:var(--gold);font-size:.85rem;letter-spacing:1px;margin-top:6px">तीर्थ यात्रा • मंदिर • घाट • दर्शन</p>
+  </div>
+
+  <!-- SLIDER WRAPPER -->
+  <div class="gal-slider-wrap">
+
+    <div class="gal-slider" id="galSlider">
+
+      <div class="gal-slide active" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1561359313-0639aad49ca6?w=1200&q=80&auto=format&fit=crop" alt="Varanasi Ganga Ghat – Kashi" loading="lazy">
+        <div class="gal-slide-caption">🕉️ काशी विश्वनाथ – Varanasi Ghat</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1705952484283-19c31e37e0e4?w=1200&q=80&auto=format&fit=crop" alt="Ganga Aarti Varanasi" loading="lazy">
+        <div class="gal-slide-caption">🪔 Ganga Aarti – Dashashwamedh Ghat</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1596097825168-c9b773f404ff?w=1200&q=80&auto=format&fit=crop" alt="Varanasi sunset boat" loading="lazy">
+        <div class="gal-slide-caption">🌅 Ganga Sunset – Varanasi</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1635337136044-83e78752bc4a?w=1200&q=80&auto=format&fit=crop" alt="Ram Mandir Ayodhya" loading="lazy">
+        <div class="gal-slide-caption">🛕 श्री राम मंदिर – Ayodhya</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1565354785692-9e7523e5a87b?w=1200&q=80&auto=format&fit=crop" alt="Varanasi ghat steps" loading="lazy">
+        <div class="gal-slide-caption">⛵ Ghats of Kashi – Varanasi</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1613445607898-f46e51645acf?w=1200&q=80&auto=format&fit=crop" alt="Varanasi boats daytime" loading="lazy">
+        <div class="gal-slide-caption">🚣 Morning Boat Ride – Ganga</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=1200&q=80&auto=format&fit=crop" alt="Varanasi ghat overview" loading="lazy">
+        <div class="gal-slide-caption">🌄 Varanasi Skyline – Ganga Ghat</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1571536802807-30451e3955d8?w=1200&q=80&auto=format&fit=crop" alt="Varanasi rowing boats" loading="lazy">
+        <div class="gal-slide-caption">⛵ Rowing on the Holy Ganga</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1627938823193-fd13c1c867dd?w=1200&q=80&auto=format&fit=crop" alt="Varanasi morning ghat" loading="lazy">
+        <div class="gal-slide-caption">🌞 Morning Prayers – Varanasi Ghat</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80&auto=format&fit=crop" alt="Hindu pilgrimage temple crowd" loading="lazy">
+        <div class="gal-slide-caption">🙏 Darshan – Hindu Pilgrimage Temple</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1706186839147-0d708602587b?w=1200&q=80&auto=format&fit=crop" alt="Varanasi boats river" loading="lazy">
+        <div class="gal-slide-caption">🏞️ The Holy Ganga – Kashi</div>
+      </div>
+
+      <div class="gal-slide" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1599831069477-b2acdc0bcb91?w=1200&q=80&auto=format&fit=crop" alt="Varanasi night aarti" loading="lazy">
+        <div class="gal-slide-caption">🪔 Evening Aarti – Varanasi</div>
+      </div>
+
+    </div>
+
+    <!-- Arrows -->
+    <button class="gal-arrow gal-prev" onclick="moveGalSlide(-1)" aria-label="Previous">&#10094;</button>
+    <button class="gal-arrow gal-next" onclick="moveGalSlide(1)" aria-label="Next">&#10095;</button>
+
+    <!-- Dots -->
+    <div class="gal-dots" id="galDots"></div>
 
   </div>
 
-  <div class="gallery-grid">
-
-    <div class="gal-item big reveal" onclick="openLightbox(this)">
-
-      <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=900&q=80" alt="Varanasi Ganga Ghat – Kashi" loading="lazy">
-
-      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
-
-    </div>
-
-    <div class="gal-item reveal" onclick="openLightbox(this)">
-
-      <img src="https://miro.medium.com/v2/resize:fit:1200/1*fYA-b-KA9UUqPL2OsDYkQw.png" alt="Hawa Mahal Jaipur Rajasthan" loading="lazy">
-
-      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
-
-    </div>
-
-    <div class="gal-item reveal" onclick="openLightbox(this)">
-
-      <img src="https://images.unsplash.com/photo-1609920658906-8223bd289001?w=600&q=80" alt="South India Temple" loading="lazy">
-
-      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
-
-    </div>
-
-    <div class="gal-item reveal" onclick="openLightbox(this)">
-
-      <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80" alt="India highway journey" loading="lazy">
-
-      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
-
-    </div>
-
-    <div class="gal-item reveal" onclick="openLightbox(this)">
-
-      <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80" alt="India pilgrimage temple crowd" loading="lazy">
-
-      <div class="gal-overlay"><i class="fas fa-expand gal-overlay-icon"></i></div>
-
-    </div>
-
-  </div>
+  <!-- THUMBNAIL STRIP -->
+  <div class="gal-thumbs" id="galThumbs"></div>
 
 </section>
 
@@ -2128,7 +2185,7 @@ footer{background:#080808;padding:80px 6% 40px;border-top:1px solid rgba(255,255
 
     <div class="reveal-right" style="border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.06)">
 
-      <img src="https://images.unsplash.com/photo-1635337136044-83e78752bc4a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmFtJTIwbWFuZGlyfGVufDB8fDB8fHww" alt="India travel map" loading="lazy" style="width:100%;height:480px;object-fit:cover;filter:saturate(0.7) brightness(0.9)">
+      <img src="https://images.unsplash.com/photo-1635337136044-83e78752bc4a?w=1000&q=80&auto=format&fit=crop" alt="Ram Mandir Ayodhya" loading="lazy" style="width:100%;height:480px;object-fit:cover;filter:saturate(0.7) brightness(0.9)">
 
     </div>
 
@@ -3171,6 +3228,65 @@ function toggleDark(){
   }
 })();
 
+</script>
+
+
+<script>
+(function(){
+  const slider = document.getElementById('galSlider');
+  const dotsWrap = document.getElementById('galDots');
+  const thumbsWrap = document.getElementById('galThumbs');
+  if(!slider) return;
+
+  const slides = slider.querySelectorAll('.gal-slide');
+  const imgs = Array.from(slides).map(s => s.querySelector('img'));
+  const captions = Array.from(slides).map(s => {
+    const c = s.querySelector('.gal-slide-caption');
+    return c ? c.textContent : '';
+  });
+  let cur = 0, timer;
+
+  // Build dots
+  slides.forEach((_,i) => {
+    const d = document.createElement('button');
+    d.className = 'gal-dot' + (i===0?' active':'');
+    d.onclick = () => goTo(i);
+    dotsWrap.appendChild(d);
+  });
+
+  // Build thumbnails
+  imgs.forEach((img,i) => {
+    const t = document.createElement('div');
+    t.className = 'gal-thumb' + (i===0?' active':'');
+    const ti = document.createElement('img');
+    ti.src = img.src;
+    ti.alt = img.alt;
+    ti.loading = 'lazy';
+    t.appendChild(ti);
+    t.onclick = () => goTo(i);
+    thumbsWrap.appendChild(t);
+  });
+
+  function goTo(n){
+    slides[cur].classList.remove('active');
+    dotsWrap.children[cur].classList.remove('active');
+    thumbsWrap.children[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dotsWrap.children[cur].classList.add('active');
+    thumbsWrap.children[cur].classList.add('active');
+    thumbsWrap.children[cur].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    resetTimer();
+  }
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(() => goTo(cur+1), 4000);
+  }
+
+  window.moveGalSlide = (dir) => goTo(cur + dir);
+  resetTimer();
+})();
 </script>
 
 </body>
